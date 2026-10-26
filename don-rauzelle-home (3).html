@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Don Rauzelle – Wake Up To Your Everyday Life</title>
+<meta name="description" content="How to find extraordinary insights hiding in ordinary moments. Writer, traveler, and eclipse chaser Don Rauzelle.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Brand tokens: swap these to restyle the whole page */
+:root{
+  --accent:#ff8a00;      /* CTA orange from current site */
+  --bronze:#bd915a;      /* headline + bio colour from current site */
+  --ink:#1c2630;         /* deep slate from footer */
+  --ink-2:#26323e;
+  --mist:#dcdcda;        /* light grey band */
+  --paper:#fff;
+  --muted:#5f6b76;
+  --line:rgba(28,38,48,.18);
+  --pad:clamp(20px,4vw,56px); --max:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+h1,h2,h3{line-height:1.08;letter-spacing:-.02em}
+
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;font:600 .9rem/1 'Outfit',sans-serif;letter-spacing:.05em;text-transform:uppercase;background:var(--accent) linear-gradient(#fff,#fff) no-repeat left/0% 100%;color:var(--ink);transition:background-size .4s cubic-bezier(.2,.7,.2,1)}
+.btn:hover{background-size:100% 100%}
+.btn.sm{padding:11px 16px;font-size:.72rem}
+.link{font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:2px}
+.ph{background-size:cover;background-position:center;position:relative}
+.ph::after{content:attr(data-label);position:absolute;left:14px;bottom:12px;font-size:.72rem;color:rgba(255,255,255,.75)}
+
+/* Header */
+header{position:fixed;inset:0 0 auto 0;z-index:10;color:#fff;transition:background .3s,transform .4s cubic-bezier(.2,.7,.2,1)}
+header.solid{background:rgba(28,38,48,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+header.hide{transform:translateY(-100%)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:none}
+.logo{font-weight:600;font-size:1.05rem;letter-spacing:.04em}
+nav{display:flex;gap:30px}
+nav a{font-size:.74rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+nav a:hover{color:var(--bronze)}
+
+/* Hero */
+.hero{min-height:min(92vh,760px);display:flex;align-items:flex-end;color:#fff;
+  background:linear-gradient(90deg,rgba(18,24,30,.9) 0%,rgba(18,24,30,.55) 60%,rgba(18,24,30,.35) 100%),
+  linear-gradient(180deg,#5d7283 0%,#33414c 45%,#1c2630 100%)}
+.hero .wrap{width:100%;padding-top:140px;padding-bottom:clamp(48px,8vh,90px)}
+.hero h1{font-size:clamp(2.8rem,7vw,5.6rem);font-weight:700;max-width:12ch;color:var(--bronze)}
+.hero h1 .wu{color:#fff}
+.hero p{margin:26px 0 34px;font-size:clamp(1.05rem,1.8vw,1.35rem);font-weight:300;max-width:34ch}
+
+/* Split sections */
+.split{padding:clamp(64px,9vw,120px) 0}
+.split .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,7vw,110px);align-items:center}
+.split.flip .copy{order:2}
+.split h2{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:700;margin-bottom:28px}
+.split p{font-size:1.08rem;color:var(--muted);max-width:46ch;margin-bottom:18px}
+.split p.strong{font-weight:600;color:var(--ink)}
+.split .photo{aspect-ratio:4/3}
+.split .link,.split .btn{margin-top:14px}
+.dark{background:var(--ink);color:#fff}
+.dark p{color:#c3cbd2}.dark p.strong{color:#fff}.dark h2{color:#fff}
+.rule{border:0;border-top:1px solid var(--line);max-width:calc(var(--max) - 2*var(--pad));margin:0 auto}
+
+/* Autopilot: statement block */
+.statement{background:var(--mist);padding:clamp(80px,12vw,160px) 0}
+.statement h2{font-size:clamp(2.2rem,5vw,4rem);font-weight:700;margin-bottom:clamp(32px,5vw,64px)}
+.statement p{font-size:clamp(1.4rem,3.4vw,2.7rem);font-weight:300;letter-spacing:-.015em;line-height:1.2;max-width:26ch;color:var(--ink);margin-bottom:.45em}
+.statement p:nth-of-type(2){color:var(--muted)}
+.statement p:nth-of-type(3){font-weight:600}
+.statement .btn{margin-top:40px}
+
+/* Join Me */
+.join{background:var(--accent)}
+.join .btn{background:var(--ink);color:#fff}
+.join .btn:hover{background:#000}
+.join p{color:#3a2300}
+
+/* Bio */
+.bio{background:var(--bronze);color:#fff;padding:clamp(64px,9vw,120px) 0}
+.bio .wrap{display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1.4fr);gap:clamp(24px,6vw,96px)}
+.bio h2{font-size:clamp(2.4rem,5vw,4rem);font-weight:700}
+.bio p{font-size:clamp(1.05rem,1.6vw,1.3rem);font-weight:300;margin-bottom:24px;max-width:62ch}
+
+/* Photo strip */
+.strip{display:grid;grid-template-columns:repeat(6,1fr);background:var(--ink);gap:6px;padding:6px 0}
+.strip .ph{aspect-ratio:1/1.05}
+.strip .ph::after{font-size:.62rem;left:8px;bottom:8px}
+
+/* Footer */
+footer{background:var(--ink);color:#fff;padding:36px 0 0}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;padding-bottom:36px}
+footer nav a{font-size:.95rem;letter-spacing:0;text-transform:none;font-weight:400}
+.social{display:flex;gap:18px}
+.social a{color:var(--bronze);font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.social a:hover,footer nav a:hover{color:var(--accent)}
+.legal{background:var(--bronze);color:#fff;font-size:.78rem;padding:14px 0}
+.legal .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.legal div{display:flex;gap:20px}
+
+/* Motion: only active when JS adds .anim (skipped for reduced-motion users) */
+.hero{position:relative}
+.hero .wrap{will-change:transform,opacity}
+.scroll{position:absolute;right:var(--pad);bottom:34px;display:flex;align-items:center;gap:12px;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.scroll i{display:block;width:56px;height:1px;background:rgba(255,255,255,.3);position:relative;overflow:hidden}
+.scroll i::after{content:"";position:absolute;inset:0;background:#fff;transform:translateX(-100%)}
+.anim .scroll i::after{animation:sweep 2s ease-in-out infinite}
+.w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.1em;margin-bottom:-.1em}
+.anim .w>span{display:inline-block;transform:translateY(112%);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i)*.09s + .1s)}
+.anim .hero p,.anim .hero .btn{opacity:0;animation:up .8s cubic-bezier(.2,.7,.2,1) 1s forwards}
+.anim .hero .btn{animation-delay:1.15s}
+.anim .rv{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) var(--d,0s),transform .8s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.anim .statement p.rv{transform:translateY(52px);transition-duration:1s}
+.anim .rv.in{opacity:1;transform:none}
+.anim .wipe{clip-path:inset(0 0 100% 0);transition:clip-path 1.2s cubic-bezier(.7,0,.2,1)}
+.anim .wipe.in{clip-path:inset(0)}
+.anim .strip{display:block;overflow:hidden;padding:6px 0}
+.anim .strip .track{display:flex;width:max-content;animation:marq 45s linear infinite}
+.anim .strip .ph{flex:0 0 clamp(170px,20vw,280px);margin-right:6px}
+.anim .strip:hover .track{animation-play-state:paused}
+@keyframes rise{to{transform:none}}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes sweep{to{transform:translateX(100%)}}
+@keyframes marq{to{transform:translateX(-50%)}}
+@media(max-width:860px){
+  nav{gap:18px}
+  .scroll{display:none}
+  .split .grid,.bio .wrap{grid-template-columns:1fr}
+  .split.flip .copy{order:0}
+  .strip{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:480px){.strip{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="logo">Don Rauzelle</a>
+    <nav aria-label="Main">
+      <a href="/about">About</a>
+      <a href="/the-clarifier">The Clarifier</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1><span class="wu">Wake Up</span> To Your Everyday Life</h1>
+      <p>How to find extraordinary insights hiding in ordinary moments.</p>
+      <a class="btn" href="/contact">Let’s explore together ↗</a>
+    </div>
+    <div class="scroll" aria-hidden="true">Scroll<i></i></div>
+  </section>
+
+  <!-- It's Not Working -->
+  <section class="split dark">
+    <div class="wrap grid">
+      <div class="copy">
+        <h2>It’s Not Working</h2>
+        <p>How often does it feel like your world’s on repeat?</p>
+        <p>Another holiday, birthday, holiday again.</p>
+        <p>Then suddenly you’re wondering where the time (and your life) went?</p>
+        <p class="strong">That’s called aimlessness. And it’s more common than you think.</p>
+      </div>
+      <!-- Replace with <img src="crowd.jpg" alt="Commuters in a crowd looking down at their phones"> -->
+      <div class="photo ph" role="img" aria-label="Crowd of commuters looking at their phones" data-label="Photo: crowd of commuters" style="background-image:linear-gradient(135deg,#4a4f55,#1b1f24)"></div>
+    </div>
+  </section>
+
+  <!-- Autopilot -->
+  <section class="statement">
+    <div class="wrap">
+      <h2>You’ve Been On Autopilot</h2>
+      <p>Autopilot asks nothing while stealing everything.</p>
+      <p>It promises comfort while delivering apathy.</p>
+      <p>It drains your energy and leaves you blaming everyone else for your impotence.</p>
+      <a class="btn" href="/the-clarifier">What is The Clarifier? ↗</a>
+    </div>
+  </section>
+
+  <!-- Until You Begin to Pay Attention -->
+  <section class="split flip">
+    <div class="wrap grid">
+      <div class="copy">
+        <h2>Until You Begin to Pay Attention</h2>
+        <p>When you slow down, look around, activate your senses, and perceive what is – a whole new world opens up.</p>
+        <p>When we pay attention, the Universe speaks more clearly, and as a result, we can act more intelligently.</p>
+        <a class="link" href="/about">About Don</a>
+      </div>
+      <div class="photo ph" role="img" aria-label="Don looking out over a fjord" data-label="Photo: Don at the fjord" style="background-image:linear-gradient(160deg,#6f8f6a,#3b5a4a 55%,#2a3b45)"></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- I Began to See For Myself -->
+  <section class="split">
+    <div class="wrap grid">
+      <div class="copy">
+        <h2>I Began to See For Myself</h2>
+        <p>I’ve spent the last 2 years traveling the world, writing about moments of awakening found in ordinary everyday life.</p>
+        <p>As a creative eclectic, my work emerges in many forms, ranging from modern parables and poetry, to long-form articles and teaching materials. I also explore visual media to showcase the beauty all around if we only stop for a moment to look.</p>
+      </div>
+      <div class="photo ph" role="img" aria-label="Don speaking to camera" data-label="Photo / video: Don speaking" style="background-image:linear-gradient(150deg,#6e7a73,#2d3a40)"></div>
+    </div>
+  </section>
+
+  <!-- Join Me -->
+  <section class="split flip join">
+    <div class="wrap grid">
+      <div class="copy">
+        <h2>Join Me!</h2>
+        <p>I invite you to join me on a journey toward paying more attention to the people, places, and things that move through our lives each day.</p>
+        <p>May inspiration always find you ready.</p>
+        <a class="btn" href="/contact">Let’s explore together ↗</a>
+      </div>
+      <div class="photo ph" role="img" aria-label="Don with arms raised on a mountain summit" data-label="Photo: summit" style="background-image:linear-gradient(180deg,#4f87c4,#9bb8cf 55%,#7a6d5a)"></div>
+    </div>
+  </section>
+
+  <!-- Bio -->
+  <section class="bio" id="bio">
+    <div class="wrap">
+      <h2>Bio</h2>
+      <div>
+        <p>Don Rauzelle is a writer, traveler, and eclipse chaser exploring what’s possible when we start paying attention to our everyday lives. He publishes weekly from places like Colombia, Vietnam, and Norway, and his work spans modern parables, long-form essays, short stories, poetry, and visual media, all rooted in the belief that extraordinary insights hide in ordinary moments.</p>
+        <p>For nearly two decades he worked at the intersection of organizational life, human behavior, and performance inside companies including Google, Adobe, and Electronic Arts. He’s also worked from four continents and is a committed International Dark Sky enthusiast.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo strip: replace each with an <img> -->
+  <section class="strip" aria-label="Photos from Don’s travels">
+    <div class="ph" data-label="Travel 1" style="background-image:linear-gradient(135deg,#6b5a48,#2a2420)"></div>
+    <div class="ph" data-label="Travel 2" style="background-image:linear-gradient(180deg,#8fc3e8,#2c6a9a)"></div>
+    <div class="ph" data-label="Travel 3" style="background-image:linear-gradient(180deg,#cfd8de,#8a9aa3)"></div>
+    <div class="ph" data-label="Travel 4" style="background-image:linear-gradient(135deg,#7a6552,#2d2724)"></div>
+    <div class="ph" data-label="Travel 5" style="background-image:linear-gradient(135deg,#e6b94a,#8a6f2a)"></div>
+    <div class="ph" data-label="Travel 6" style="background-image:linear-gradient(135deg,#a36a4a,#3a2a26)"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <nav aria-label="Footer"><a href="/about">About</a><a href="/the-clarifier">The Clarifier</a><a href="/contact">Contact</a></nav>
+    <div class="social"><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">Web</a></div>
+  </div>
+  <div class="legal">
+    <div class="wrap">
+      <span>© 2026 Don Rauzelle M.A., Writer, Speaker, Eclipse Chaser.</span>
+      <div><a href="/privacy">Privacy Policy</a><a href="/terms">Terms &amp; Conditions</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, hdr=document.querySelector('header'),
+      hero=document.querySelector('.hero'), inner=hero.querySelector('.wrap'),
+      anim=!matchMedia('(prefers-reduced-motion: reduce)').matches, lastY=0, ticking=false;
+
+  function onScroll(){
+    var y=window.scrollY;
+    hdr.classList.toggle('solid',y>40);
+    if(Math.abs(y-lastY)>4){hdr.classList.toggle('hide',y>lastY&&y>400);lastY=y;}
+    if(anim&&y<hero.offsetHeight){
+      inner.style.transform='translateY('+(y*.22)+'px)';
+      inner.style.opacity=Math.max(0,1-y/(hero.offsetHeight*.85));
+    }
+    ticking=false;
+  }
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
+  onScroll();
+  if(!anim) return;
+  root.classList.add('anim');
+
+  /* Hero headline: words rise in one by one */
+  var h1=hero.querySelector('h1'), i=0;
+  h1.setAttribute('aria-label',h1.textContent.trim());
+  (function wrap(n){
+    Array.prototype.slice.call(n.childNodes).forEach(function(c){
+      if(c.nodeType===3){
+        var f=document.createDocumentFragment();
+        c.textContent.split(/(\s+)/).forEach(function(t){
+          if(!t) return;
+          if(!t.trim()){f.append(' ');return;}
+          var w=document.createElement('span'),s=document.createElement('span');
+          w.className='w';w.setAttribute('aria-hidden','true');
+          s.textContent=t;s.style.setProperty('--i',i++);w.append(s);f.append(w);
+        });
+        c.replaceWith(f);
+      } else if(c.nodeType===1) wrap(c);
+    });
+  })(h1);
+
+  /* Scroll reveals: staggered text, wiped photos */
+  document.querySelectorAll('.split h2,.split p,.split .link,.split .btn,.statement h2,.statement p,.statement .btn,.bio h2,.bio p').forEach(function(el){
+    var step=el.closest('.statement')?.18:.09;
+    el.classList.add('rv');
+    el.style.setProperty('--d',(Array.prototype.indexOf.call(el.parentNode.children,el)*step)+'s');
+    el.addEventListener('transitionend',function(){el.classList.remove('rv','in');el.style.removeProperty('--d');},{once:true});
+  });
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add('in');
+      e.target.querySelectorAll('.wipe').forEach(function(p){p.classList.add('in');});
+      io.unobserve(e.target);
+    });
+  },{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+  /* A fully clipped element can't trigger the observer itself, so watch its parent row instead */
+  document.querySelectorAll('.photo').forEach(function(el){el.classList.add('wipe');io.observe(el.parentNode);});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+  /* Photo strip: endless marquee, pauses on hover */
+  var strip=document.querySelector('.strip'), track=document.createElement('div');
+  track.className='track';
+  Array.prototype.slice.call(strip.children).forEach(function(c){track.append(c);});
+  Array.prototype.slice.call(track.children).forEach(function(c){var k=c.cloneNode(true);k.setAttribute('aria-hidden','true');track.append(k);});
+  strip.append(track);
+})();
+</script>
+</body>
+</html>
